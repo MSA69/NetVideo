@@ -21,7 +21,7 @@ int main() {
         assert(customer.getName() == "Fred");
 
         // test using literal string
-        assert(customer.statement() == "Rental Record for Fred\nAmount owed is: 0\nYou earned: 0 frequent renter points\n");
+        assert(customer.statement() == "Rental Record for Fred\nAmount owed is: 0\n");
     }
 
     // no rental
