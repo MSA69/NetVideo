@@ -37,7 +37,7 @@ double Customer::rentalPrice(const Rental& r)
             case Video::REGULAR:
             if (r.tDaysRented() > 2)
 			{
-				return (2+ (r.tDaysRented() - 2) * 1.5)
+				return (2+ (r.tDaysRented() - 2) * 1.5);
 			}
 			return 2;
             break;
@@ -49,7 +49,7 @@ double Customer::rentalPrice(const Rental& r)
             case Video::CHILDRENS:
             if (r.tDaysRented() > 3)
 			{
-				return(1.5 + (r.tDaysRented() - 3) * 1.5)
+				return(1.5 + (r.tDaysRented() - 3) * 1.5);
 			}
 			return 1.5;
             break;
