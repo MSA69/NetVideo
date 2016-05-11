@@ -31,28 +31,29 @@ void Customer::addRental(const Rental& rental) {
 
 double Customer::rentalPrice(const Rental& r)
 {
-	double videoCost = 0;
 	
-        switch(r.tVideo().getCode()) {
-
+        switch(r.tVideo().getCode()) 
+		{
             case Video::REGULAR:
-            videoCost += 2;
             if (r.tDaysRented() > 2)
-                videoCost += (r.tDaysRented() - 2) * 1.5;
+			{
+				return (2+ (r.tDaysRented() - 2) * 1.5)
+			}
+			return 2;
             break;
 
             case Video::NEW_RELEASE:
-            videoCost += r.tDaysRented() * 3;
+			return (r.tDaysRented() * 3);
             break;
 
             case Video::CHILDRENS:
-            videoCost += 1.5;
             if (r.tDaysRented() > 3)
-                videoCost += (r.tDaysRented() - 3) * 1.5;
+			{
+				return(1.5 + (r.tDaysRented() - 3) * 1.5)
+			}
+			return 1.5;
             break;
         }
-		
-	return videoCost;
 }
 
 // customer rental statement
