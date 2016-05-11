@@ -29,10 +29,29 @@ void Customer::addRental(const Rental& rental) {
     rentals.push_back(rental);
 }
 
-double Customer::amountFor() const
+double Customer::amountFor(const Rental& r)
 {
-	
-	return 0;
+	double thisAmount = 0;
+        switch(r.tVideo().getCode()) {
+
+            case Video::REGULAR:
+            thisAmount += 2;
+            if (r.tDaysRented() > 2)
+                thisAmount += (r.tDaysRented() - 2) * 1.5;
+            break;
+
+            case Video::NEW_RELEASE:
+            thisAmount += r.tDaysRented() * 3;
+            break;
+
+            case Video::CHILDRENS:
+            thisAmount += 1.5;
+            if (r.tDaysRented() > 3)
+                thisAmount += (r.tDaysRented() - 3) * 1.5;
+            break;
+        }
+		
+	return thisAmount;
 }
 
 // customer rental statement
