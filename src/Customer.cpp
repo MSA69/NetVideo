@@ -66,14 +66,14 @@ std::string Customer::statement() const {
     // rentals
     double totalAmount = 0;
     int frequentRenterPoints = 0;
-    for (std::vector<Rental>::const_iterator it = rentals.begin(); it != rentals.end(); ++it) {
+    for (std::vector<Rental>::const_iterator it = rentals.begin(); it != rentals.end(); ++it) 
+	{
 
         // every rental is a rental point
         ++frequentRenterPoints;
 
         // new releases rented for more then one day gives a bonus rental point
-        if (it->getVideo().getCode() == Video::NEW_RELEASE &&
-            it->getDaysRented() > 1 )
+        if (it->getVideo().getCode() == Video::NEW_RELEASE &&it->getDaysRented() > 1 )
             ++frequentRenterPoints;
 
         // title of rental
@@ -81,15 +81,15 @@ std::string Customer::statement() const {
         result += it->getVideo().getTitle();
         result += "\t";
 
-       
+        double videoCost = rentalPrice(it);
 
         // amount of rental
         std::ostringstream out_str_stream;
-        out_str_stream << thisAmount;
+        out_str_stream << videoCost;
         result += out_str_stream.str();
         result += "\n";
 
-        totalAmount += thisAmount;
+        totalAmount += videoCost;
     }
 
     // total amount owed
